@@ -46,16 +46,45 @@ Fraction Fraction::divide(const Fraction &a)
 {
 }
 
-void Fraction::print()
+void Fraction::printFraction()
 {
 }
 
 void Fraction::printFractionAsFloat()
 {
+    if (denominator == 0)
+    {
+        cout << endl
+             << "DIVIDE BY ZERO ERROR!!!" << endl;
+    }
+    else
+    {
+        cout << float(numerator) / float(denominator);
+    }
 }
 
 void Fraction::reduce()
 {
+    int n = numerator < 0 ? -numerator : numerator;
+    int d = denominator;
+    int largest = n > d ? n : d;
+
+    int gcd;
+
+    for (int loop = largest; loop >= 2; loop--)
+    {
+        if (numerator % loop == 0 && denominator % loop == 0)
+        {
+            gcd = loop;
+            break;
+        }
+    }
+
+    if (gcd != 0)
+    {
+        numerator /= gcd;
+        denominator /= gcd;
+    }
 }
 
 /*
