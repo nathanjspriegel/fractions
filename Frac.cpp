@@ -58,6 +58,13 @@ Fraction Fraction::multiply(const Fraction &a)
 
 Fraction Fraction::divide(const Fraction &a)
 {
+    Fraction t;
+
+    t.numerator = numerator * a.denominator;
+    t.denominator = denominator * a.numerator;
+    t.reduce();
+
+    return t;
 }
 
 void Fraction::printFraction()
