@@ -36,10 +36,24 @@ Fraction Fraction::add(const Fraction &a)
 
 Fraction Fraction::subtract(const Fraction &a)
 {
+    Fraction t;
+
+    t.numerator = numerator * a.denominator - a.numerator * denominator;
+    t.denominator = a.denominator * denominator;
+    t.reduce();
+
+    return t;
 }
 
 Fraction Fraction::multiply(const Fraction &a)
 {
+    Fraction t;
+
+    t.numerator = a.numerator * numerator;
+    t.denominator = a.denominator * denominator;
+    t.reduce();
+
+    return t;
 }
 
 Fraction Fraction::divide(const Fraction &a)
@@ -48,6 +62,7 @@ Fraction Fraction::divide(const Fraction &a)
 
 void Fraction::printFraction()
 {
+    cout << numerator << "/" << denominator;
 }
 
 void Fraction::printFractionAsFloat()
@@ -69,7 +84,7 @@ void Fraction::reduce()
     int d = denominator;
     int largest = n > d ? n : d;
 
-    int gcd;
+    int gcd = 0;
 
     for (int loop = largest; loop >= 2; loop--)
     {
