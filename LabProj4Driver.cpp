@@ -1,4 +1,3 @@
-// driver for cmpsc122 Lab 4
 #include "Frac.h"
 #include <iostream>
 using namespace std;
